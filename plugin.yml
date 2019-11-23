@@ -1,0 +1,12 @@
+name: PlayerInfoScoreBoard_MoneySystem
+main: yurisi\main
+version: 1.1
+api: [1.0.0,2.0.0,3.0.0]
+load: POSTWORLD
+author: yurisi
+authors: [xtakumatutix]
+description: 
+commands:
+ joho:
+  usage:
+  description: "scoreboardをオン/オフする"
