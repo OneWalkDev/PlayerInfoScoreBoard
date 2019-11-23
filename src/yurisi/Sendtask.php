@@ -77,6 +77,17 @@ class Sendtask extends Task{
 				$entry->objectiveName = "sidebar";
 				$entry->type = $entry::TYPE_FAKE_PLAYER;
 				$entry->customName = "§e§l所持金: {$mymoney}￥";
+				$entry->score = 0;
+				$entry->scoreboardId = 00000;
+				$pk = new SetScorePacket();
+				$pk->type = $pk::TYPE_CHANGE;
+				$pk->entries[] = $entry;
+				$player->sendDataPacket($pk);
+
+				$entry = new ScorePacketEntry();
+				$entry->objectiveName = "sidebar";
+				$entry->type = $entry::TYPE_FAKE_PLAYER;
+				$entry->customName = "§b§l座標: x:{$x} y:{$y} z:{$z}";
 				$entry->score = 1;
 				$entry->scoreboardId = 00001;
 				$pk = new SetScorePacket();
@@ -87,7 +98,7 @@ class Sendtask extends Task{
 				$entry = new ScorePacketEntry();
 				$entry->objectiveName = "sidebar";
 				$entry->type = $entry::TYPE_FAKE_PLAYER;
-				$entry->customName = "§b§l座標: x:{$x} y:{$y} z:{$z}";
+				$entry->customName = "§b§lワールド: {$world} §b§l方角: {$hougaku}";
 				$entry->score = 2;
 				$entry->scoreboardId = 00002;
 				$pk = new SetScorePacket();
@@ -95,10 +106,11 @@ class Sendtask extends Task{
 				$pk->entries[] = $entry;
 				$player->sendDataPacket($pk);
 
+
 				$entry = new ScorePacketEntry();
 				$entry->objectiveName = "sidebar";
 				$entry->type = $entry::TYPE_FAKE_PLAYER;
-				$entry->customName = "§b§lワールド: {$world}";
+				$entry->customName = "§c§l現在時刻: {$time}";
 				$entry->score = 3;
 				$entry->scoreboardId = 00003;
 				$pk = new SetScorePacket();
@@ -109,7 +121,7 @@ class Sendtask extends Task{
 				$entry = new ScorePacketEntry();
 				$entry->objectiveName = "sidebar";
 				$entry->type = $entry::TYPE_FAKE_PLAYER;
-				$entry->customName = "§b§l方角: {$hougaku}";
+				$entry->customName = "§6§l持ってるid: {$id}:{$damage}";
 				$entry->score = 4;
 				$entry->scoreboardId = 00004;
 				$pk = new SetScorePacket();
@@ -120,7 +132,7 @@ class Sendtask extends Task{
 				$entry = new ScorePacketEntry();
 				$entry->objectiveName = "sidebar";
 				$entry->type = $entry::TYPE_FAKE_PLAYER;
-				$entry->customName = "§c§l現在時刻: {$time}";
+				$entry->customName = "§6§l持ってる名前: {$iname}";
 				$entry->score = 5;
 				$entry->scoreboardId = 00005;
 				$pk = new SetScorePacket();
@@ -131,7 +143,7 @@ class Sendtask extends Task{
 				$entry = new ScorePacketEntry();
 				$entry->objectiveName = "sidebar";
 				$entry->type = $entry::TYPE_FAKE_PLAYER;
-				$entry->customName = "§6§l持ってるid: {$id}:{$damage}";
+				$entry->customName = "§6§lオンライン人数: {$onlp}/{$fullp}";
 				$entry->score = 6;
 				$entry->scoreboardId = 00006;
 				$pk = new SetScorePacket();
@@ -142,31 +154,9 @@ class Sendtask extends Task{
 				$entry = new ScorePacketEntry();
 				$entry->objectiveName = "sidebar";
 				$entry->type = $entry::TYPE_FAKE_PLAYER;
-				$entry->customName = "§6§l持ってる名前: {$iname}";
+				$entry->customName = "§6Ping: {$ping}";
 				$entry->score = 7;
 				$entry->scoreboardId = 00007;
-				$pk = new SetScorePacket();
-				$pk->type = $pk::TYPE_CHANGE;
-				$pk->entries[] = $entry;
-				$player->sendDataPacket($pk);
-
-				$entry = new ScorePacketEntry();
-				$entry->objectiveName = "sidebar";
-				$entry->type = $entry::TYPE_FAKE_PLAYER;
-				$entry->customName = "§6§lオンライン人数: {$onlp}/{$fullp}";
-				$entry->score = 8;
-				$entry->scoreboardId = 00008;
-				$pk = new SetScorePacket();
-				$pk->type = $pk::TYPE_CHANGE;
-				$pk->entries[] = $entry;
-				$player->sendDataPacket($pk);
-
-				$entry = new ScorePacketEntry();
-				$entry->objectiveName = "sidebar";
-				$entry->type = $entry::TYPE_FAKE_PLAYER;
-				$entry->customName = "§6Ping: {$ping}";
-				$entry->score = 9;
-				$entry->scoreboardId = 00009;
 				$pk = new SetScorePacket();
 				$pk->type = $pk::TYPE_CHANGE;
 				$pk->entries[] = $entry;
