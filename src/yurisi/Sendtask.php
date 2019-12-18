@@ -11,7 +11,6 @@ use pocketmine\scheduler\PluginTask;
 use pocketmine\scheduler\CallbackTask;
 use pocketmine\scheduler\Task;
 
-use metowa1227\moneysystem\api\core\API;
 
 use pocketmine\level\Level;
 
@@ -44,7 +43,6 @@ class Sendtask extends Task{
 				$pk->sortOrder = 0;
 				$player->sendDataPacket($pk);
 
-				$mymoney = API::getInstance()->get($player);
 				$x = $player->getfloorX();
 				$y = $player->getfloorY();
 				$z = $player->getfloorZ();
@@ -72,17 +70,6 @@ class Sendtask extends Task{
 					break;
 				}
 
-
-				$entry = new ScorePacketEntry();
-				$entry->objectiveName = "sidebar";
-				$entry->type = $entry::TYPE_FAKE_PLAYER;
-				$entry->customName = "§e§l所持金: {$mymoney}￥";
-				$entry->score = 0;
-				$entry->scoreboardId = 00000;
-				$pk = new SetScorePacket();
-				$pk->type = $pk::TYPE_CHANGE;
-				$pk->entries[] = $entry;
-				$player->sendDataPacket($pk);
 
 				$entry = new ScorePacketEntry();
 				$entry->objectiveName = "sidebar";

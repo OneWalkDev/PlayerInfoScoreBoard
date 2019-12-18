@@ -17,7 +17,6 @@ use pocketmine\scheduler\Task;
 
 use pocketmine\event\player\PlayerLoginEvent;
 
-use metowa1227\moneysystem\api\core\API;
 
 class main extends PluginBase implements Listener {
 
