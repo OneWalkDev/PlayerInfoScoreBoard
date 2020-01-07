@@ -2,7 +2,7 @@
 
 namespace yurisi\Data;
 
-interface Packetdata{
+interface PacketData{
 	const D_S="sidebar";
 	const C_N="dummy";
 }
