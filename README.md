@@ -1,8 +1,8 @@
 # PlayerInfoScoreBoard 
 
-#MoneySystem版 
+# MoneySystem版 
 
-##MoneySystem必須
+## MoneySystem必須
 
 ### 概要
 プレイヤーの情報をスコアボードで表示します。
