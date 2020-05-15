@@ -1,6 +1,7 @@
 # PlayerInfoScoreBoard 
 
 ## EconomyAPI版 
+## MiningLevelSystemのスコア搭載  
 
 
 ### 概要
@@ -10,9 +11,6 @@ Tipだと小さいスマホで切れてしまうのですが、スコアボー�
 ### コマンド
 /joho スコアボードのon/off
 
-### めも
-スコアボード使うの初めてなのでクソコードかもしれませんがご了承ください()
-
-### 連絡先
-twitter https://twitter.com/Dev_yrs
-homepage https://yurisi.space/yurisi
+### 元のプラグイン＆MiningLevelSystem
+https://github.com/yurisi0212/PlayerInfoScoreBoard by.Yurisi様  
+https://github.com/deceitya/MiningLevelSystem by.deceitya様
