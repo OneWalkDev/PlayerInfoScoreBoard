@@ -18,11 +18,12 @@ use pocketmine\network\mcpe\protocol\SetDisplayObjectivePacket;
 use pocketmine\network\mcpe\protocol\SetScorePacket;
 use pocketmine\network\mcpe\protocol\types\ScorePacketEntry;
 
-use onebone\economyapi\EconomyAPI;
-use Deceitya\MiningLevel\MiningLevelAPI;
+use metowa1227\moneysystem\api\core\API;
+use MoneySystemJob\api\JobAPI;
 
 use yurisi\main;
-use yurisi\Data\PacketData;
+use yurisi\Data\Packetdata;
+
 
 class Sendtask extends Task implements PacketData{
 
@@ -33,22 +34,23 @@ class Sendtask extends Task implements PacketData{
 	public function onRun($tick){
 		foreach($this->Main->getServer()->getInstance()->getOnlinePlayers() as $player) {
 			$name = $player->getName();
-			$level = MiningLevelAPI::getInstance()->getLevel($player);//レベルを収得
-			$exp = MiningLevelAPI::getInstance()->getExp($player);//EXP(経験値)を収得
-			$nextexp =  MiningLevelAPI::getInstance()->getLevelUpExp($player);//次の経験値を収得
-			$expmath = $nextexp - $exp;//次の残りの経験値を収得
+            $job = JobAPI::getInstance()->getJob($player);
+			if (null == $job){
+			    $job = "無し";
+            }
+
+
+
 			if($this->Main->isOn($player)) {
 				$this->RemoveData($player);
 				$this->setupData($player);
-				$this->sendData($player,"§e所持金: ".EconomyAPI::getInstance()->getMonetaryUnit().EconomyAPI::getInstance()->myMoney($name),1);
-				$this->sendData($player,"§b座標: ".$player->getfloorX().",".$player->getfloorY().",".$player->getfloorZ(),2);
-				$this->sendData($player,"§bワールド: ".$player->getLevel()->getName(),3);
-				$this->sendData($player,"§c現在時刻: ".date("G時i分s秒"),4);
-				$this->sendData($player,"§6持ってるid: ".$player->getInventory()->getItemInHand()->getId().":".$player->getInventory()->getItemInHand()->getDamage(),5);
-				$this->sendData($player,"§6オンライン人数: ".count($player->getServer()->getOnlinePlayers())."/".$player->getServer()->getMaxPlayers(),6);
-				$this->sendData($player,"§e現在のレベル: ".$level,7);
-				$this->sendData($player,"§e次のレベルまで: ".$expmath,8);
-				//$this->sendData($player,"§e次のレベルまで: ".$exp."/".$nextexp,8); //(1/10のように表示させたい場合上のコードを消し、このコードに置き換える。)
+				$this->sendData($player,"§e所持金: ".API::getInstance()->getUnit().API::getInstance()->get($player),1);
+                $this->sendData($player,"§e職業: ".$job,2);
+				$this->sendData($player,"§b座標: ".$player->getfloorX().",".$player->getfloorY().",".$player->getfloorZ(),3);
+				$this->sendData($player,"§bワールド: ".$player->getLevel()->getName(),4);
+				$this->sendData($player,"§c現在時刻: ".date("G時i分s秒"),5);
+				$this->sendData($player,"§6持ってるid: ".$player->getInventory()->getItemInHand()->getId().":".$player->getInventory()->getItemInHand()->getDamage(),6);
+				$this->sendData($player,"§6オンライン人数: ".count($player->getServer()->getOnlinePlayers())."/".$player->getServer()->getMaxPlayers(),7);
 			}else{
 				$this->RemoveData($player);
 			}
