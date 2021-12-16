@@ -3,22 +3,12 @@ declare(strict_types=1);
 
 namespace space\yurisi\Task;
 
-use pocketmine\Server;
-use pocketmine\player\Player;
-
-use pocketmine\scheduler\Task;
-
-use pocketmine\network\mcpe\protocol\{
-  RemoveObjectivePacket,
-  SetDisplayObjectivePacket,
-  SetScorePacket
-};
-
-use pocketmine\network\mcpe\protocol\types\ScorePacketEntry;
-
 use onebone\economyapi\EconomyAPI;
-
-use space\yurisi\PlayerInfoScoreBoard;
+use pocketmine\network\mcpe\protocol\{RemoveObjectivePacket, SetDisplayObjectivePacket, SetScorePacket};
+use pocketmine\network\mcpe\protocol\types\ScorePacketEntry;
+use pocketmine\player\Player;
+use pocketmine\scheduler\Task;
+use pocketmine\Server;
 
 class SendTask extends Task {
 
@@ -42,8 +32,7 @@ class SendTask extends Task {
   }
 
   public function onCancel(): void {
-    $player = $this->player;
-    $this->RemoveData($player);
+    $this->RemoveData($this->player);
   }
 
   private function setupData(Player $player) {
