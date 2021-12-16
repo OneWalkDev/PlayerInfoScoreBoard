@@ -4,17 +4,13 @@ declare(strict_types=1);
 namespace space\yurisi;
 
 use pocketmine\event\Listener;
+use pocketmine\event\player\{PlayerJoinEvent, PlayerQuitEvent};
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
-
-use pocketmine\event\player\{
-  PlayerJoinEvent,
-  PlayerQuitEvent
-};
-
 use pocketmine\utils\Config;
-use space\yurisi\Task\SendTask;
+
 use space\yurisi\Command\johoCommand;
+use space\yurisi\Task\SendTask;
 
 class playerInfoScoreBoard extends PluginBase implements Listener {
 

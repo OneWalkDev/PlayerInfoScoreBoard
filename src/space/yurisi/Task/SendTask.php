@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace space\yurisi\Task;
 
 use onebone\economyapi\EconomyAPI;
+
 use pocketmine\network\mcpe\protocol\{RemoveObjectivePacket, SetDisplayObjectivePacket, SetScorePacket};
 use pocketmine\network\mcpe\protocol\types\ScorePacketEntry;
 use pocketmine\player\Player;
